@@ -8,4 +8,7 @@
     4. Per month?
 2. What is the cost associated to the no-show problem?
 ---
+### Proposed guidelines to collaborate
+- When working on an issue, create a new branch named "i{n}", where 'n' refers to the issue number. For example, if you wanted to start working on issue #54, you would create a branch named "i54" to work on it.
+---
 ---
