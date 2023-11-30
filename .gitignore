@@ -3,3 +3,9 @@
 
 ## Pycharm
 .idea/
+
+## Python
+__pycache__/
+
+## Vim
+*.swp
