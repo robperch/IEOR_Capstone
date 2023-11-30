@@ -33,11 +33,6 @@ from .config import (
     word_translation,
 
 
-    ## Budget data
-    planned_budget_dir,
-    daily_budget_dir,
-
-
 )
 
 

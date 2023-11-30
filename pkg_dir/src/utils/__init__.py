@@ -35,16 +35,6 @@ from .general_utils import (
 )
 
 
-## Notion utils
-from .notion_utils import (
-    notion_api_call,
-    get_notion_db_json,
-    create_notion_db_schema,
-    notion_db_blueprint_df,
-    notion_json_to_df,
-    notion_db_to_df,
-)
-
 ## Database utils
 from .sql_utils import (
     datestring_to_sql_parameter,
@@ -54,18 +44,6 @@ from .sql_utils import (
     sql_to_df,
 )
 
-## Excel utils
-from .excel_utils import (
-    excel_writer,
-    get_sheet_names_xlsx,
-)
-
-## GCP utils
-from .gcp_utils import (
-
-    extract_gsheet_data,
-
-)
 
 
 

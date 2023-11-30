@@ -13,8 +13,6 @@
 
 "--------------- Third party imports ---------------"
 import psycopg2
-import mysql.connector
-from mysql.connector import errorcode
 import pandas as pd
 
 "--------------- Local application imports ---------------"
@@ -103,23 +101,6 @@ def database_conection(db_crds):
     elif db_crds == "pc_db_backup":
         conn_string = "dbname=" + db_creds["dbname"] + " user=" + db_creds["user"] + " password=" + db_creds["psw"]
         conn = psycopg2.connect(conn_string)
-
-    ### MySQL
-    elif "mysql" in db_crds:
-
-        try:
-            conn = mysql.connector.connect(**get_db_crds(db_crds))
-
-        except mysql.connector.Error as err:
-
-            if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-                print("Something wrong with username of password")
-
-            if err.errno == errorcode.ER_BAD_DB_ERROR:
-                print("Database does not exist")
-
-            else:
-                print(err)
 
     ### Not found
     else:
