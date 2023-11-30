@@ -9,3 +9,6 @@ __pycache__/
 
 ## Vim
 *.swp
+
+## Local credentials
+local/
