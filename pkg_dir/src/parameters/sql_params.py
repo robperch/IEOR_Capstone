@@ -26,7 +26,7 @@
 "----------------------------------------------------------------------------------------------------------------------"
 
 
-## Information about the doctor's agendas
+## Appointments query
 sql_params_appointments = {
     "params": {
         "$1": "'1900-01-01'",
