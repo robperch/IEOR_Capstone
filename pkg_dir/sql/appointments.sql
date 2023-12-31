@@ -1,18 +1,17 @@
 ---- EXTRACTING ALL AGENDA ENTRIES IN THE SYSTEM
 
 
-SELECT cita.citaid,
-       citafecha,
-       citahorad,
-       citahorah,
---        c.cestatusobs,
-       SUBSTRING(c.cestatusobs, '\((.+?)\)') AS fecha_creacion,
-       citaestado,
-       u.usuarionomfull,
-       u.usuarioest,
-       especialidad.especialidadnom,
-       sucursal.sucursalnom,
-       p.pacientenomfull
+SELECT cita.citaid as appointment_id,
+       citafecha as appointment_date,
+       citahorad as appointment_start_time,
+       citahorah as appointment_end_time,
+       SUBSTRING(c.cestatusobs, '\((.+?)\)') as appointment_creation,
+       citaestado as appointment_status,
+       u.usuarionomfull as doctor,
+       especialidad.especialidadnom as medical_specialty,
+       sucursal.sucursalnom as clinic,
+       p.pacienteid as patient_id,
+       p.pacientefnac as patient_birth_date
 
 FROM cita
 
@@ -25,11 +24,9 @@ LEFT JOIN paciente p ON cita.pacienteid = p.pacienteid
 INNER JOIN citaestatus c ON cita.citaid = c.citaid AND cita.citaanio = c.citaanio
 
 
-WHERE citafecha >= '2022-04-12'
-  AND citafecha <= '2022-04-12'
---   AND c.cestatusobs::tsvector @@ 'Creado'::tsquery
+WHERE citafecha >= '2023-12-01'
+  AND citafecha <= '2023-12-05'
   AND c.cestatusobs ~* '\yCreado\y'
-  AND usuarionomfull LIKE '%PIEDRAS%'
 
 ORDER BY citafecha
 
