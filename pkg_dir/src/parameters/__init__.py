@@ -19,23 +19,8 @@ from .agenda_params import(
 ## Sql parameters
 from .sql_params import (
         
-    ### Doctor's agendas parameters
-    sql_params_workhrs,
-
-    ### Information about the doctor's agendas
-    sql_params_fullagenda,
-
-    ### Data of appointments with their creation date
-    sql_params_appts_creation,
-
-    ### Pharma sales data
-    sql_params_pharmasales,
-
-    ### Income registered in PC's system
-    sql_params_income_syspc,
-
-    ### Doctor's information in the database
-    sql_params_docs_data,
+    ### Appointments query
+    sql_params_appointments,
 
 )
 
