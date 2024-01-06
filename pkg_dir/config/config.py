@@ -13,7 +13,6 @@
 import os
 
 "--------------- Third party imports ---------------"
-from pytz import timezone
 
 
 "--------------- Local application imports ---------------"
@@ -50,6 +49,9 @@ pkl_dir_path = os.path.join(data_dir_path, "pickles")
 
 
 
+"-------------- Pipeline pickle files --------------"
+
+## Extract
 
 
 "----------------------------------------------------------------------------------------------------------------------"

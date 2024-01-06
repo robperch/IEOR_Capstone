@@ -13,24 +13,7 @@
 from .config import (
 
 
-    ## Sql files
-
-    ### PostgreSQL
-    postgre_files_path,
-    postgre_docs_hrs,
-    postgre_query_fullagenda,
-    postgre_query_apptsct,
-    postgres_income_syspc,
-    postgres_docs_data,
-
-
-    ## Time zone parameters
-    utc_tz,
-    mexico_tz,
-
-
-    ## Useful parameters
-    word_translation,
+    ## Data files path
 
 
 )
