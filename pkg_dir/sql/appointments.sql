@@ -24,7 +24,7 @@ LEFT JOIN paciente p ON cita.pacienteid = p.pacienteid
 INNER JOIN citaestatus c ON cita.citaid = c.citaid AND cita.citaanio = c.citaanio
 
 
-WHERE citafecha >= '2023-01-01'
+WHERE citafecha >= '2023-12-30'
   AND citafecha <= '2023-12-31'
   AND c.cestatusobs ~* '\yCreado\y'
   AND citaestado not in (
