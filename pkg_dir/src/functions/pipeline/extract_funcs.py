@@ -18,11 +18,9 @@ import os
 import pandas as pd
 
 "--- Local application imports ---"
-from pkg_dir.src.utils import (
-
-    create_directory_if_nonexistent,
-
-)
+from pkg_dir.config import *
+from pkg_dir.src.utils import *
+from pkg_dir.src.parameters import *
 
 
 
@@ -41,11 +39,15 @@ def ingest_from_pc_database():
     Download data from Punto Clínico's source database and convert it into a dataframe
 
     :param:
-    :return:
+    :return dfx: (dataframe) data extracted from database
     """
 
 
-    return
+    ## Obtaining query results as tuples
+    dfx = sql_to_df(creds_file_path, sql_files_path, main_appts_query_path, sql_params_appointments)
+
+
+    return dfx
 
 
 
@@ -63,7 +65,7 @@ def save_extract_local_df_pkl(dfx):
     pickle.dump(
         dfx,
         open(
-            os.path.join(pipeline_pkl_extract_local_dir, pipeline_pkl_extract_name) + data_prefix + file.split(sep='.')[0] + '.pkl',
+            os.path.join(pipeline_pkl_extract_path, pipeline_pkl_extract_name),
             'wb'
         )
     )
@@ -88,10 +90,10 @@ def extract_pipeline_func():
 
 
     ## Download data from source database and convert it into a dataframe
-    def ingest_from_pc_database():
+    dfx = ingest_from_pc_database()
 
     ## Saving locally train and test dataset as df-pickle
-    save_extract_local_df_pkl()
+    save_extract_local_df_pkl(dfx)
 
 
     return

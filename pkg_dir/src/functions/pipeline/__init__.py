@@ -11,17 +11,12 @@
 
 
 ## Agenda occupation functions
-from .agenda_funcs import (
+from .extract_funcs import (
 
-    work_time_assesment,
-    extract_appts_data,
-    appts_lysis_data,
+    extract_pipeline_func,
 
 )
 
-
-## Pipeline functions
-from .pipeline import *
 
 
 
