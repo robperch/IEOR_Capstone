@@ -102,6 +102,11 @@ def database_conection(db_crds):
         conn_string = "dbname=" + db_creds["dbname"] + " user=" + db_creds["user"] + " password=" + db_creds["psw"]
         conn = psycopg2.connect(conn_string)
 
+    ### AWS database (new migration database)
+    elif db_crds == "aws_db":
+        conn_string = "host=" + db_creds["host"] + " dbname=" + db_creds["dbname"] + " user=" + db_creds["user"] + " password=" + db_creds["psw"]
+        conn = psycopg2.connect(conn_string)
+
     ### Not found
     else:
         raise NameError("No protocol defined for the RDBMS selected")
