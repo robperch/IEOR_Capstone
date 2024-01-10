@@ -13,6 +13,7 @@
 import os
 
 "--------------- Third party imports ---------------"
+# from pytz import timezone
 
 
 "--------------- Local application imports ---------------"
@@ -48,10 +49,40 @@ data_dir_path = os.path.join(package_dir, "data")
 pkl_dir_path = os.path.join(data_dir_path, "pickles")
 
 
+"-------------- SQL files path --------------"
+
+## Path to directory with SQL files
+sql_files_path = os.path.join(data_dir_path, "pkg_dir", 'sql')
+
+## File with main query to extract appointments data
+main_appts_query_path = os.path.join(sql_files_path, "appointments.sql")
+
 
 "-------------- Pipeline pickle files --------------"
 
+## Local directory to pickles
+pipeline_pkl_local_dir = os.path.join(data_dir_path, "pkg_dir", "data", "pickles", "pipeline")
+
 ## Extract
+pipeline_pkl_extract_path = os.path.join(pipeline_pkl_local_dir, "extract")
+pipeline_pkl_extract_name = os.path.join(pipeline_pkl_local_dir, "extract")
+
+
+
+
+
+"----------------------------------------------------------------------------------------------------------------------"
+############################## Time zone parameters ####################################################################
+"----------------------------------------------------------------------------------------------------------------------"
+
+
+# ## Relevant time zones
+# utc_tz = timezone('UTC')
+# mexico_tz = timezone('Mexico/General')
+
+
+
+
 
 
 "----------------------------------------------------------------------------------------------------------------------"
