@@ -13,8 +13,9 @@
 from .config import (
 
     creds_file_path,
+    db_pc_prod_yaml,
     sql_files_path,
-    main_appts_query_path,
+    main_appts_query_filename,
 
     ## Pickles
     pipeline_pkl_extract_path,

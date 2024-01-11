@@ -30,8 +30,11 @@ import os
 ## Package directory
 package_dir = os.path.dirname(os.path.dirname(__file__))
 
-## Local credentials
+## Path to local credentials
 creds_file_path = os.path.join(package_dir, "config", "local", "credentials.yaml")
+
+## Local credentials reference
+db_pc_prod_yaml = 'pc_db_prod'
 
 
 
@@ -52,20 +55,20 @@ pkl_dir_path = os.path.join(data_dir_path, "pickles")
 "-------------- SQL files path --------------"
 
 ## Path to directory with SQL files
-sql_files_path = os.path.join(data_dir_path, "pkg_dir", 'sql')
+sql_files_path = os.path.join(package_dir, 'sql') + "/"
 
 ## File with main query to extract appointments data
-main_appts_query_path = os.path.join(sql_files_path, "appointments.sql")
+main_appts_query_filename = "appointments.sql"
 
 
 "-------------- Pipeline pickle files --------------"
 
 ## Local directory to pickles
-pipeline_pkl_local_dir = os.path.join(data_dir_path, "pkg_dir", "data", "pickles", "pipeline")
+pipeline_pkl_local_dir = os.path.join(data_dir_path, "pickles", "pipeline")
 
 ## Extract
 pipeline_pkl_extract_path = os.path.join(pipeline_pkl_local_dir, "extract")
-pipeline_pkl_extract_name = os.path.join(pipeline_pkl_local_dir, "extract")
+pipeline_pkl_extract_name = "extract.pkl"
 
 
 
