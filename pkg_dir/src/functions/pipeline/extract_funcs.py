@@ -44,7 +44,7 @@ def ingest_from_pc_database():
 
 
     ## Obtaining query results as tuples
-    dfx = sql_to_df(creds_file_path, sql_files_path, main_appts_query_path, sql_params_appointments)
+    dfx = sql_to_df(db_pc_prod_yaml, sql_files_path, main_appts_query_filename, sql_params_appointments)
 
 
     return dfx
