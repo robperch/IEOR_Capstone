@@ -56,7 +56,7 @@ def datestring_to_sql_parameter(datestring):
 "----------------------------------------------------------------------------------------------------------------------"
 
 
-## Get bd credentials
+## Get db credentials
 def get_db_crds(db_crds):
     """
     Get credentials to connect to database
@@ -162,6 +162,36 @@ def execute_sql_script(db_crds, sql_files_path, sql_script, sql_params):
 
     return tuples
 
+def migrate_to_aws(db_crds, sql_files_path, sql_script, company_data):
+    """
+    Executing sql script to migrate company data to AWS database
+
+    :param db_crds (string): Specification of the database the user wants to connect to
+    :param sql_files_path (string): path where the sql script is located
+    :param sql_script (string): name of sql script
+    :param company_data (numpy.ndarray)): array of extracted data from company data
+    :return (tuples): contents obtained from sql query
+    """
+
+
+    ## Establishing connection to database
+    conn = database_conection(db_crds)
+
+    ## Creating cursor
+    cur = conn.cursor()
+
+    ## Opening sql script that will be executed
+    sql_script = open(sql_files_path + sql_script, "r").read()
+
+    ## Executing sql file 
+    cur.executemany(sql_script, company_data)
+
+    ## Closing cursor and connection and committing changes
+    cur.close()
+    conn.commit()
+    conn.close()
+
+    return "Completed"
 
 
 ## Obtain dataframe from sql query
