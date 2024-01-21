@@ -159,6 +159,41 @@ def execute_sql_script(db_crds, sql_files_path, sql_script, sql_params):
 
 
 
+## Executing sql statement with specified variables
+def sql_string_to_df(db_crds, sql_string):
+    """
+    Executing sql script with specified variables
+
+    :param db_crds (string): Specification of the database the user wants to connect to
+    :param sql_string (string): sql statement stored as string
+    :return (tuples): contents obtained from sql query
+    """
+
+
+    ## Establishing connection to database
+    conn = database_conection(db_crds)
+
+    ## Creating cursor
+    cur = conn.cursor()
+
+    ## Executing sql file
+    cur.execute(sql_string)
+
+    ## Obtaining results from script execution
+    tuples = cur.fetchall()
+
+    ## Closing cursor and connection
+    cur.close()
+    conn.close()
+
+    ## Converting tuples into dataframe
+    dfx = pd.DataFrame(tuples)
+
+
+    return dfx
+
+
+
 ## Obtain dataframe from sql query
 def sql_to_df(db_crds, sql_files_path, sql_script, sql_params):
     """
