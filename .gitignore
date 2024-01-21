@@ -15,3 +15,6 @@ local/
 
 ## Jupyter
 .ipynb_checkpoints/
+
+## Pkl objects
+*.pkl

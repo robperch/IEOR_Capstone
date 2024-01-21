@@ -20,6 +20,9 @@ from .agenda_funcs import (
 )
 
 
+## Pipeline functions
+from .pipeline import *
+
 
 
 
