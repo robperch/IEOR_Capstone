@@ -41,6 +41,7 @@ from .sql_utils import (
     get_db_crds,
     database_conection,
     execute_sql_script,
+    sql_string_to_df,
     sql_to_df,
 )
 
