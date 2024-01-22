@@ -11,6 +11,8 @@
 
 "--- Standard library imports ---"
 import random
+import pickle
+import os
 
 "--- Third party imports ---"
 
@@ -142,39 +144,6 @@ def add_test_labels(X_test, dataset_dict):
 
 
 
-## Saving module results
-def save_transform_results(dataset_dict):
-    """
-    Saving module results
-
-    :param dataset_dict: (dictionary) dict containing all the dataset objects (e.g. train_x, train_y, test_x, test_y)
-    :return None:
-    """
-
-
-    ## Creating directory for local pickles if not existent
-    create_directory_if_nonexistent(pipeline_pkl_transform_local_dir)
-
-    ## Saving locally the dataset objects as pickles
-    save_dataset_objects_locally(
-        dataset_dict,
-        pipeline_pkl_transform_local_dir,
-        pipeline_pkl_transform_name
-    )
-
-    ## Saving in the cloud the dataset objects that were locally saved as pickles
-    save_dataset_objects_in_cloud(
-        dataset_dict,
-        pipeline_pkl_transform_local_dir,
-        cloud_provider,
-        base_bucket_name,
-        pipeline_pkl_transform_aws_key,
-        pipeline_pkl_transform_name
-    )
-
-
-    return
-
 
 
 "--------------- Compounded functions ---------------"
@@ -188,44 +157,26 @@ def transform_pipeline_func():
     """
 
 
-    ## Saving dataset objects in a dictionary data structure
-    dataset_dict = dataset_objects_dict(pipeline_pkl_extract_local_dir)
+    ## Reading extract object saved as pickle locally
+    pkl_obj = pipeline_pkl_extract_path + "/" + pipeline_pkl_extract_name
 
-    ## Original dataset objects
-    dataset_objs = [key for key in dataset_dict]
-
-    ## Iterating over every extract object and applying the wrangling functions
-    for dataset_obj in dataset_objs:
-
-        ## Apply data wrangling functions based on a predefined dataschema
-        dfx = data_wrangling_schema_functions(dataset_dict[dataset_obj], titanicsp_base_data_schema)
-
-        ## Setting the id feature as the index
-        dfx = set_id_feature_as_index(dfx)
-
-        ## Splitting the training dataset in training and validation (Note: the dataset object with the key 'y_train' contains both labels and features)
-        if dataset_obj == 'y_train':
-
-            ## Separating features from labels in the training dataset
-            X_train, y_train = split_features_and_labels(dfx)
-
-            ## Splitting train into train and validation
-            X_train, X_val, y_train, y_val = split_data_train_test(X_train, y_train, test_split_size, train_size=None, random_state=random_state_split)
-
-            ## Updating the dataset objects dictionary with the additional data
-            dataset_dict = update_dataset_objects_dict(dataset_dict, X_train, X_val, y_train, y_val)
-
-        elif dataset_obj == 'X_test':
-
-            ## Updating the dataset dictionary with results
-            dataset_dict.update({'X_test': dfx})
-
-            ## Adding test dummy labels
-            dataset_dict = add_test_labels(dfx, dataset_dict)
+    with open(pkl_obj, 'rb') as obj_content:
+        dfx = pickle.load(obj_content)
 
 
-    ## Saving module results
-    save_transform_results(dataset_dict)
+    ## Apply data wrangling functions based on a predefined dataschema
+    dfx = data_wrangling_schema_functions(dfx, base_data_schema)
+
+
+    ## Saving df as pickle and storing it locally
+    pickle.dump(
+        dfx,
+        open(
+            os.path.join(pipeline_pkl_transform_path, pipeline_pkl_transform_name),
+            'wb'
+        )
+    )
+
 
 
     return
