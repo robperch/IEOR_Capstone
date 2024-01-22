@@ -102,7 +102,7 @@ base_data_schema = {
     },
 
     'clinic': {
-        'relevant': True,
+        'relevant': False,
         'clean_col_name': 'clinic',
         'data_type': 'str',
         'feature_type': 'categorical',
@@ -112,7 +112,7 @@ base_data_schema = {
 
     'patient_id': {
         'relevant': True,
-        'clean_col_name': 'clinic',
+        'clean_col_name': 'patient_id',
         'data_type': 'str',
         'feature_type': 'categorical',
         'model_relevant': False,
