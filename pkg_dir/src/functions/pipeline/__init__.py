@@ -1,4 +1,4 @@
-## BASIC CONFIGURATION INITIALIZATION MODULE
+## FUNCTIONS INITIALIZATION MODULE
 
 
 
@@ -9,19 +9,14 @@
 "----------------------------------------------------------------------------------------------------------------------"
 
 
-## Config imports
-from .config import (
 
-    creds_file_path,
-    db_pc_prod_yaml,
-    sql_files_path,
-    main_appts_query_filename,
+## Agenda occupation functions
+from .extract_funcs import (
 
-    ## Pickles
-    pipeline_pkl_extract_path,
-    pipeline_pkl_extract_name,
+    extract_pipeline_func,
 
 )
+
 
 
 
