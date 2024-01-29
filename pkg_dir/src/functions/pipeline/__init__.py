@@ -10,13 +10,15 @@
 
 
 
-## Agenda occupation functions
+## Extract functions
 from .extract_funcs import (
-
     extract_pipeline_func,
-
 )
 
+## Transform functions
+from .transform_funcs import (
+    transform_pipeline_func,
+)
 
 
 

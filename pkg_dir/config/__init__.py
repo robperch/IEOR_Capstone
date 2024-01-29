@@ -20,6 +20,8 @@ from .config import (
     ## Pickles
     pipeline_pkl_extract_path,
     pipeline_pkl_extract_name,
+    pipeline_pkl_transform_path,
+    pipeline_pkl_transform_name,
 
 )
 

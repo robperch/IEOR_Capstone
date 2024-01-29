@@ -70,6 +70,10 @@ pipeline_pkl_local_dir = os.path.join(data_dir_path, "pickles", "pipeline")
 pipeline_pkl_extract_path = os.path.join(pipeline_pkl_local_dir, "extract")
 pipeline_pkl_extract_name = "extract.pkl"
 
+## Transform
+pipeline_pkl_transform_path = os.path.join(pipeline_pkl_local_dir, "transform")
+pipeline_pkl_transform_name = "transform.pkl"
+
 
 
 
