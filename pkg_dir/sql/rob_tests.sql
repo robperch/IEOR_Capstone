@@ -45,3 +45,24 @@ ORDER BY
 ;
 
 select * from servicio limit 10;
+
+
+-- Looking for patient's locations
+select
+    pd.pacienteid,
+    pd.pacienteddir,
+    pd.pacientedciudad,
+    p.pacientenomfull
+
+from pacientedomicilio pd
+
+inner join paciente p on pd.pacienteid = p.pacienteid
+
+limit 100
+
+
+;
+
+SELECT COUNT(*) AS count_non_null
+FROM pacientedomicilio
+WHERE pacientedomicilio.pacienteddir IS NOT NULL;
