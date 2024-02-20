@@ -9,7 +9,13 @@
 "----------------------------------------------------------------------------------------------------------------------"
 
 
-## Turns parameters
+## Project parameters
+from .project_params import(
+    base_data_schema,
+)
+
+
+## Agenda parameters
 from .agenda_params import(
     turn_div_hour,
     pc_turns_hours,

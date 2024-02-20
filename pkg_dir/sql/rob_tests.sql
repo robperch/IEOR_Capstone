@@ -24,13 +24,27 @@ SELECT cita.citaid as appointment_id,
        c.cestatusobs,
        citaestado as appointment_status,
        u.usuarionomfull as doctor,
+<<<<<<< HEAD
        especialidad.especialidadnom as medical_specialty
+=======
+       e.especialidadnom as medical_specialty,
+       su.sucursalnom as clinic,
+       p.pacienteid as patient_id,
+       p.pacientefnac as patient_birth_date
+>>>>>>> 6bf1c0ba778a955d39fb37a3fa37429d1136d67d
 
 FROM cita
 
 
 INNER JOIN usuario u ON cita.citadoctorid = u.usuarioid
+<<<<<<< HEAD
 INNER JOIN especialidad ON u.usuarioespecialidadid = especialidad.especialidadid
+=======
+INNER JOIN servicio se ON cita.servicioid = servicio.servicioid
+INNER JOIN especialidad e ON u.usuarioespecialidadid = especialidad.especialidadid
+INNER JOIN sucursal su ON cita.citasucursalid = sucursal.sucursalid
+LEFT JOIN paciente p ON cita.pacienteid = p.pacienteid
+>>>>>>> 6bf1c0ba778a955d39fb37a3fa37429d1136d67d
 INNER JOIN citaestatus c ON cita.citaid = c.citaid AND cita.citaanio = c.citaanio
 
 
@@ -73,5 +87,16 @@ WHERE citafecha >= '2020-01-01'
 --                          'TRIAGE_COMPLETO',
 --                          'LISTA_ESPERA',
 --                          'VALIDA_DATOS'
+<<<<<<< HEAD
 --     )
 ;
+=======
+--                         )
+
+ORDER BY
+    citafecha DESC
+
+;
+
+select * from servicio limit 10;
+>>>>>>> 6bf1c0ba778a955d39fb37a3fa37429d1136d67d
