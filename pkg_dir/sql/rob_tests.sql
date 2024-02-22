@@ -45,3 +45,48 @@ ORDER BY
 ;
 
 select * from servicio limit 10;
+
+
+select * from paciente limit 10;
+
+SELECT count(cita.citaid) as appointment_id
+
+FROM cita
+
+WHERE citafecha >= '2022-01-01'
+  AND citafecha <= '2023-12-31'
+
+;
+
+
+SELECT cita.citaid as appointment_id,
+       citafecha as appointment_date,
+       citahorad as appointment_start_time,
+       citahorah as appointment_end_time,
+       citaestado as appointment_status,
+       u.usuarionomfull as doctor,
+       e.especialidadnom as medical_specialty,
+       su.sucursalnom as clinic,
+       p.pacienteid as patient_id,
+       p.pacientenomfull as patient_name,
+       p.pacientefnac as patient_birth_date
+
+FROM cita
+
+
+         INNER JOIN usuario u ON cita.citadoctorid = u.usuarioid
+         INNER JOIN servicio se ON cita.servicioid = se.servicioid
+         INNER JOIN especialidad e ON u.usuarioespecialidadid = e.especialidadid
+         INNER JOIN sucursal su ON cita.citasucursalid = su.sucursalid
+         LEFT JOIN paciente p ON cita.pacienteid = p.pacienteid
+
+
+WHERE citafecha = '2024-06-02'
+-- WHERE p.pacientenomfull = 'TEODORA ROSAS HERNANDEZ (292372)'
+--     AND citafecha = '2024-06-02'
+
+
+;
+
+
+select citasubsecuente from cita where citaanio = '2024' limit 40;
