@@ -45,7 +45,7 @@ ORDER BY
 ;
 
 select * from servicio limit 10;
-
+select * from cita limit 10;
 
 select * from paciente limit 10;
 
